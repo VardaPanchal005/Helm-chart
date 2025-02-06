@@ -237,7 +237,7 @@ helm upgrade myhelloworld ./helloworld
 
 To verify that the update was successful:
 
-## 1. Check the deployed pods:
+1. Check the deployed pods:
 
 ```bash
 kubectl get pods
@@ -245,7 +245,7 @@ kubectl get pods
 
 You should now see 2 pods running for your application, reflecting the updated replica count.
 
-## 2. Check the ReplicaSet to ensure that the number of replicas is correctly updated:
+2. Check the ReplicaSet to ensure that the number of replicas is correctly updated:
 
 ```bash
 kubectl get replicaset
@@ -258,19 +258,19 @@ To access the Nginx application running inside the Kubernetes cluster, you need 
 
 To set up port forwarding:
 
-## 1. First, find the pod associated with your deployed service:
+1. First, find the pod associated with your deployed service:
 
 ```bash
 kubectl get pods
 ```
 
-## 2. Then, forward the port to your local machine by running the following command. Replace <your-pod-name> with the actual pod name from the previous command:
+2. Then, forward the port to your local machine by running the following command. Replace <your-pod-name> with the actual pod name from the previous command:
 
 ```bash
 kubectl port-forward pod/<your-pod-name> port:Nodeport
 ```
 
-## You can now access the application by navigating to the link http:127.0.0.1:port in your web browser.
+3. You can now access the application by navigating to the link http:127.0.0.1:port in your web browser.
 
 
 ### 12. Access the Kubernetes Dashboard
