@@ -233,7 +233,47 @@ To apply the updated replica count and redeploy the application, use the followi
 helm upgrade myhelloworld ./helloworld
 ```
 
-### 9. Access the Kubernetes Dashboard
+### 10. Verify the Update
+
+To verify that the update was successful:
+
+## 1. Check the deployed pods:
+
+```bash
+kubectl get pods
+```
+
+You should now see 2 pods running for your application, reflecting the updated replica count.
+
+## 2. Check the ReplicaSet to ensure that the number of replicas is correctly updated:
+
+```bash
+kubectl get replicaset
+```
+
+You should see the ReplicaSet with 2 replicas.
+
+### 11. Port Forwarding to Access the Application
+To access the Nginx application running inside the Kubernetes cluster, you need to forward the port from the Kubernetes pod to your local machine.
+
+To set up port forwarding:
+
+## 1. First, find the pod associated with your deployed service:
+
+```bash
+kubectl get pods
+```
+
+## 2. Then, forward the port to your local machine by running the following command. Replace <your-pod-name> with the actual pod name from the previous command:
+
+```bash
+kubectl port-forward pod/<your-pod-name> port:Nodeport
+```
+
+## You can now access the application by navigating to the link http:127.0.0.1:port in your web browser.
+
+
+### 12. Access the Kubernetes Dashboard
 
 After running `sudo microk8s dashboard-proxy`, you will see a URL (e.g., `http://127.0.0.1:port`). Open this URL in your browser to access the Kubernetes dashboard.
 
